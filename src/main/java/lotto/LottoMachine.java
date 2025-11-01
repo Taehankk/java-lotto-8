@@ -4,7 +4,9 @@ import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
-	LottoMachine() {}
+	List<Lotto> lottos;
+	Lotto winningLotto;
+	int bonusNum;
 	
 	InputManager im = new InputManager();
 	
@@ -22,7 +24,25 @@ public class LottoMachine {
 			}	
 		}
 		
-		System.out.println(drawingLotto(lottoCnt));
+		lottos = drawingLotto(lottoCnt);
+		
+		while(true) {
+			try {
+				winningLotto = im.winningNumsInput();
+				break;
+			} catch(IllegalArgumentException e) {
+				System.out.println(e);
+			}
+		}
+		
+		while(true) {
+			try {				
+				bonusNum = im.bonusNumInput();
+				break;
+			} catch(IllegalArgumentException e) {
+				System.out.println(e);
+			}			
+		}
 	}
 	
 	public void end() {
