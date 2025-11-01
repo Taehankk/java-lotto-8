@@ -9,6 +9,7 @@ public class LottoMachine {
 	int bonusNum;
 	
 	InputManager im = new InputManager();
+	OutputManager om = new OutputManager();
 	
 	public void start() {
 		int lottoCnt;
@@ -25,6 +26,7 @@ public class LottoMachine {
 		}
 		
 		lottos = drawingLotto(lottoCnt);
+		om.printLottos(lottos);
 		
 		while(true) {
 			try {
