@@ -1,22 +1,28 @@
 package lotto;
 
+import java.util.*;
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class LottoMachine {
 	LottoMachine() {}
 	
 	InputManager im = new InputManager();
 	
 	public void start() {
+		int lottoCnt;
+		
 		while(true) {
 			try {
 				int money = im.moneyInput();
-				int lottoCnt = purchaseLotto(money);
-				System.out.println(lottoCnt);
+				lottoCnt = purchaseLotto(money);
+
 				break;
 			} catch (IllegalArgumentException e) {
 				System.out.println(e);
-			}
-		
+			}	
 		}
+		
+		System.out.println(drawingLotto(lottoCnt));
 	}
 	
 	public void end() {
@@ -29,5 +35,19 @@ public class LottoMachine {
 		}
 		
 		return money / 1000;
+	}
+	
+	public List<Lotto> drawingLotto(int lottoCnt) {
+		List<Lotto> lottos = new ArrayList<>();
+		
+		for(int i = 0; i < lottoCnt; i++) {
+			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			Collections.sort(numbers);
+			Lotto lotto = new Lotto(numbers);
+			
+			lottos.add(lotto);
+		}
+		
+		return lottos;
 	}
 }
