@@ -5,7 +5,8 @@ public class Application {
         // TODO: 프로그램 구현
     	LottoMachine lm = new LottoMachine();
     	
-    	lm.start();
+    	lm.purchaseLotto();
+    	lm.pickWinningNums();
     	lm.checkLottos();
     }
 }

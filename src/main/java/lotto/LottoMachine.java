@@ -12,13 +12,12 @@ public class LottoMachine {
 	OutputManager om = new OutputManager();
 	LottoCalculator lc = new LottoCalculator();
 	
-	public void start() {
-		int lottoCnt;
+	public void purchaseLotto() {
+		int money;
 		
 		while(true) {
 			try {
-				int money = im.moneyInput();
-				lottoCnt = purchaseLotto(money);
+				money = im.moneyInput();
 
 				break;
 			} catch (IllegalArgumentException e) {
@@ -26,9 +25,30 @@ public class LottoMachine {
 			}	
 		}
 		
-		lottos = drawingLotto(lottoCnt);
+		if(money % 1000 != 0) {
+			throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
+		}
+		
+		lottos = drawingLotto(money / 1000);
+	}
+	
+	public List<Lotto> drawingLotto(int lottoCnt) {
+		List<Lotto> lottos = new ArrayList<>();
+		
+		for(int i = 0; i < lottoCnt; i++) {
+			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			Collections.sort(numbers);
+			Lotto lotto = new Lotto(numbers);
+			
+			lottos.add(lotto);
+		}
+
 		om.printLottos(lottos);
 		
+		return lottos;
+	}
+	
+	public void pickWinningNums() {		
 		while(true) {
 			try {
 				winningLotto = im.winningNumsInput();
@@ -46,28 +66,6 @@ public class LottoMachine {
 				System.out.println(e);
 			}			
 		}
-	}
-	
-	public int purchaseLotto(int money) {		
-		if(money % 1000 != 0) {
-			throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
-		}
-		
-		return money / 1000;
-	}
-	
-	public List<Lotto> drawingLotto(int lottoCnt) {
-		List<Lotto> lottos = new ArrayList<>();
-		
-		for(int i = 0; i < lottoCnt; i++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-			Collections.sort(numbers);
-			Lotto lotto = new Lotto(numbers);
-			
-			lottos.add(lotto);
-		}
-		
-		return lottos;
 	}
 	
 	public void checkLottos() {
