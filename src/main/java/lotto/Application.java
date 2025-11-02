@@ -6,5 +6,6 @@ public class Application {
     	LottoMachine lm = new LottoMachine();
     	
     	lm.start();
+    	lm.checkLottos();
     }
 }

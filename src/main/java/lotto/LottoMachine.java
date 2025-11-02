@@ -10,6 +10,7 @@ public class LottoMachine {
 	
 	InputManager im = new InputManager();
 	OutputManager om = new OutputManager();
+	LottoCalculator lc = new LottoCalculator();
 	
 	public void start() {
 		int lottoCnt;
@@ -47,10 +48,6 @@ public class LottoMachine {
 		}
 	}
 	
-	public void end() {
-		
-	}
-	
 	public int purchaseLotto(int money) {		
 		if(money % 1000 != 0) {
 			throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
@@ -71,5 +68,23 @@ public class LottoMachine {
 		}
 		
 		return lottos;
+	}
+	
+	public void checkLottos() {
+		List<Integer> winningNums = winningLotto.getNumbers();
+		List<Integer> pickNums;
+		
+		Winner result;
+		for(int i = 0; i < lottos.size(); i++) {
+			pickNums = lottos.get(i).getNumbers();
+			result = lc.determineWinner(winningNums, pickNums, bonusNum);
+			saveResult(result);
+		}
+	}
+	
+	public void saveResult(Winner result) {
+		if(result == null) return;
+		
+		lc.saveWinningResult(result);
 	}
 }
