@@ -11,11 +11,11 @@ public class InputManager {
 		try {
 			money = Integer.parseInt(Console.readLine());		
 		} catch (NumberFormatException e) {			
-			throw new IllegalArgumentException("[Error] 숫자를 입력해주세요.");
+			throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
 		}
 		
 		if(money <= 0) {
-			throw new IllegalArgumentException("[Error] 양수의 숫자를 입력해주세요.");
+			throw new IllegalArgumentException("[ERROR] 양수의 숫자를 입력해주세요.");
 		}		
 		
 		return money;
@@ -32,7 +32,7 @@ public class InputManager {
 				int num = Integer.parseInt(input[i]);
 				winningLotto.add(num);
 			} catch(NumberFormatException e) {
-				throw new IllegalArgumentException("[Error] comma(,)로 구분한 숫자 6개를 입력해 주세요.");
+				throw new IllegalArgumentException("[ERROR] comma(,)로 구분한 숫자 6개를 입력해 주세요.");
 			}
 		}
 		System.out.println();
@@ -49,11 +49,11 @@ public class InputManager {
 		try {
 			bonusNum = Integer.parseInt(Console.readLine());
 		} catch(NumberFormatException e) {
-			throw new IllegalArgumentException("[Error] 보너스 번호 오류 : 로또 번호는 1 이상 45 이하의 자연수입니다.");
+			throw new IllegalArgumentException("[ERROR] 보너스 번호 오류 : 로또 번호는 1 이상 45 이하의 자연수입니다.");
 		}
 		
 		if(bonusNum < 1 || bonusNum > 45) {
-			throw new IllegalArgumentException("[Error] 보너스 번호 오류 : 1에서 45 사이의 숫자 1개를 입력해 주세요.");
+			throw new IllegalArgumentException("[ERROR] 보너스 번호 오류 : 1에서 45 사이의 숫자 1개를 입력해 주세요.");
 		}
 		System.out.println();
 		
