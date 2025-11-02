@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
@@ -35,7 +37,7 @@ public class LottoMachine {
 		
 		for(int i = 0; i < lottoCnt; i++) {
 			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-			Collections.sort(numbers);
+			numbers.stream().sorted().collect(Collectors.toList());
 			Lotto lotto = new Lotto(numbers);
 			
 			lottos.add(lotto);
