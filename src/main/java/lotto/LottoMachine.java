@@ -6,15 +6,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class LottoMachine {
 	List<Lotto> lottos;
 	Lotto winningLotto;
-	int bonusNum;
+	int money, bonusNum;
 	
 	InputManager im = new InputManager();
 	OutputManager om = new OutputManager();
 	LottoCalculator lc = new LottoCalculator();
 	
-	public void purchaseLotto() {
-		int money;
-		
+	public void purchaseLotto() {		
 		while(true) {
 			try {
 				money = im.moneyInput();
@@ -84,5 +82,9 @@ public class LottoMachine {
 		if(result == null) return;
 		
 		lc.saveWinningResult(result);
+	}
+	
+	public void showResult() {
+		lc.getLottoResult(money);
 	}
 }

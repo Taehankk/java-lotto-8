@@ -8,5 +8,6 @@ public class Application {
     	lm.purchaseLotto();
     	lm.pickWinningNums();
     	lm.checkLottos();
+    	lm.showResult();
     }
 }

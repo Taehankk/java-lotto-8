@@ -35,6 +35,7 @@ public class InputManager {
 				throw new IllegalArgumentException("[Error] comma(,)로 구분한 숫자 6개를 입력해 주세요.");
 			}
 		}
+		System.out.println();
 		
 		Collections.sort(winningLotto);
 		
@@ -54,6 +55,7 @@ public class InputManager {
 		if(bonusNum < 1 || bonusNum > 45) {
 			throw new IllegalArgumentException("[Error] 보너스 번호 오류 : 1에서 45 사이의 숫자 1개를 입력해 주세요.");
 		}
+		System.out.println();
 		
 		return bonusNum;
 	}

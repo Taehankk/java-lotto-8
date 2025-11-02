@@ -5,6 +5,8 @@ import java.util.*;
 public class LottoCalculator {
 	private Map<Winner, Integer> winningStats = new HashMap<>();
 	
+	OutputManager om = new OutputManager();
+	
 	LottoCalculator() {
 		for(Winner w : Winner.values()) {
 			winningStats.put(w, 0);
@@ -57,7 +59,18 @@ public class LottoCalculator {
 	public void saveWinningResult(Winner result) {
 		int count = winningStats.get(result);
 		winningStats.put(result, count + 1);
+	}
+	
+	public void getLottoResult(int money) {
+		om.printResult(winningStats, calcReturnRate(money));
+	}
+	
+	public String calcReturnRate(int money) {
+		float prize = 0;
+		for(Winner w : Winner.values()) {
+			prize += w.getPrize() * winningStats.get(w);
+		}
 		
-		System.out.println(winningStats.toString());
+		return String.format("%.1f", prize / money * 100);
 	}
 }
