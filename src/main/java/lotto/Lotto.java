@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,13 +20,27 @@ public class Lotto {
         		throw new IllegalArgumentException("[ERROR] 로또 번호는 1 이상 45 이하의 자연수입니다.");
         	}
         }
+        
+        validateDuplication(numbers);
+    }
+    
+    // TODO: 추가 기능 구현
+    public void validateDuplication(List<Integer> numbers) {
+    	Set<Integer> numberSet = new HashSet<>();
+    	
+    	for(int num : numbers) {
+    		numberSet.add(num);
+    	}
+    	
+    	if(numberSet.size() != 6) {
+    		throw new IllegalArgumentException("[ERROR] 중복된 값을 입력하셨습니다.");
+    	}
     }
     
     public List<Integer> getNumbers() {
     	return numbers;
     }
 
-    // TODO: 추가 기능 구현
     @Override
     public String toString() {
     	return numbers.toString();
