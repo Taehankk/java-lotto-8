@@ -22,4 +22,10 @@ class LottoTest {
     }
 
     // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("로또에 음수가 들어가면 예외가 발생한다.")
+    @Test
+    void minusNumberFailTest() {
+    	assertThatThrownBy(() -> new Lotto(List.of(1, 3, 7, -11, 31, 40)))
+    			.isInstanceOf(IllegalArgumentException.class);
+    }
 }
