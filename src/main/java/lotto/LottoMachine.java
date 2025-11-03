@@ -18,7 +18,6 @@ public class LottoMachine {
 		while(true) {
 			try {
 				money = im.moneyInput();
-
 				break;
 			} catch (IllegalArgumentException e) {
 				System.out.println(e);

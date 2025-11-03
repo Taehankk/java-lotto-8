@@ -29,25 +29,15 @@ public class LottoCalculator {
 	}
 	
 	public Winner intToWinner(int matchedCnt) {
-		if(matchedCnt == 3) {
-			return Winner.FIFTH;
-		}
+		if(matchedCnt == 3) return Winner.FIFTH;
+				
+		if(matchedCnt == 4) return Winner.FOURTH;
 		
-		if(matchedCnt == 4) {
-			return Winner.FOURTH;
-		}
+		if(matchedCnt == 5) return Winner.THIRD;
 		
-		if(matchedCnt == 5) {
-			return Winner.THIRD;
-		}
+		if(matchedCnt == 50) return Winner.SECOND;
 		
-		if(matchedCnt == 50) {
-			return Winner.SECOND;
-		}
-		
-		if(matchedCnt == 6) {
-			return Winner.FIRST;
-		}
+		if(matchedCnt == 6) return Winner.FIRST;
 		
 		return null;
 	}
