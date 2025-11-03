@@ -24,10 +24,6 @@ public class LottoMachine {
 			}	
 		}
 		
-		if(money % 1000 != 0) {
-			throw new IllegalArgumentException("[Error] 1000원 단위로 입력해주세요.");
-		}
-		
 		lottos = drawingLotto(money / 1000);
 	}
 	

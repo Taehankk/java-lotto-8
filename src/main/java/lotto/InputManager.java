@@ -13,10 +13,18 @@ public class InputManager {
 		} catch (NumberFormatException e) {			
 			throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
 		}
-		
+				
+		return validInputMoney(money);
+	}
+	
+	public int validInputMoney(int money) {
 		if(money <= 0) {
 			throw new IllegalArgumentException("[ERROR] 양수의 숫자를 입력해주세요.");
-		}		
+		}
+		
+		if(money % 1000 != 0) {
+			throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
+		}
 		
 		return money;
 	}
