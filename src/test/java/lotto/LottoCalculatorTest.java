@@ -1,8 +1,6 @@
 package lotto;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +9,7 @@ import java.util.*;;
 class LottoCalculatorTest {
 	LottoCalculator lc;
 	
-	@BeforeAll
+	@BeforeEach
 	void setUp() {
 		lc = new LottoCalculator();
 	}

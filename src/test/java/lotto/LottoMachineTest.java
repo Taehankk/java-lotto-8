@@ -7,7 +7,8 @@ import java.util.*;
 
 class LottoMachineTest {
 	LottoMachine lm;
-	@BeforeAll
+	
+	@BeforeEach
 	void setUp() {
 		lm = new LottoMachine();
 	}
