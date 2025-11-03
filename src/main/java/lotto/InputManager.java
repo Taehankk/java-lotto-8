@@ -26,19 +26,16 @@ public class InputManager {
 		
 		System.out.println("당첨 번호를 입력해 주세요.(comma(,)로 구분하여 입력해주세요.)");
 		String[] input = Console.readLine().replace(" ", "").split(",");
-
 		for(int i = 0; i < input.length; i++) {
-			try {				
-				int num = Integer.parseInt(input[i]);
-				winningLotto.add(num);
+			try {
+				winningLotto.add(Integer.parseInt(input[i]));
 			} catch(NumberFormatException e) {
 				throw new IllegalArgumentException("[ERROR] comma(,)로 구분한 숫자 6개를 입력해 주세요.");
 			}
 		}
 		System.out.println();
 		
-		Collections.sort(winningLotto);
-		
+		Collections.sort(winningLotto);		
 		return new Lotto(winningLotto);
 	}
 	

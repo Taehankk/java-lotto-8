@@ -14,7 +14,7 @@ public class LottoMachine {
 	OutputManager om = new OutputManager();
 	LottoCalculator lc = new LottoCalculator();
 	
-	public void purchaseLotto() {		
+	public void purchaseLotto() {
 		while(true) {
 			try {
 				money = im.moneyInput();
@@ -47,7 +47,7 @@ public class LottoMachine {
 		return lottos;
 	}
 	
-	public void pickWinningNums() {		
+	public void pickWinningNums() {
 		while(true) {
 			try {
 				winningLotto = im.winningNumsInput();
