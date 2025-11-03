@@ -30,10 +30,15 @@ public class InputManager {
 	}
 	
 	public Lotto winningNumsInput() {
-		List<Integer> winningLotto = new ArrayList<>();
-		
 		System.out.println("당첨 번호를 입력해 주세요.(comma(,)로 구분하여 입력해주세요.)");
 		String[] input = Console.readLine().replace(" ", "").split(",");
+		
+		return new Lotto(stringToInt(input));
+	}
+	
+	public List<Integer> stringToInt(String[] input) {
+		List<Integer> winningLotto = new ArrayList<>();
+		
 		for(int i = 0; i < input.length; i++) {
 			try {
 				winningLotto.add(Integer.parseInt(input[i]));
@@ -43,8 +48,8 @@ public class InputManager {
 		}
 		System.out.println();
 		
-		Collections.sort(winningLotto);		
-		return new Lotto(winningLotto);
+		Collections.sort(winningLotto);
+		return winningLotto;
 	}
 	
 	public int bonusNumInput() {
@@ -54,13 +59,17 @@ public class InputManager {
 		try {
 			bonusNum = Integer.parseInt(Console.readLine());
 		} catch(NumberFormatException e) {
-			throw new IllegalArgumentException("[ERROR] 보너스 번호 오류 : 로또 번호는 1 이상 45 이하의 자연수입니다.");
-		}
-		
-		if(bonusNum < 1 || bonusNum > 45) {
-			throw new IllegalArgumentException("[ERROR] 보너스 번호 오류 : 1에서 45 사이의 숫자 1개를 입력해 주세요.");
+			throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자 1개를 입력해 주세요.");
 		}
 		System.out.println();
+		
+		return validBonusNum(bonusNum);
+	}
+	
+	public int validBonusNum(int bonusNum) {
+		if(bonusNum < 1 || bonusNum > 45) {
+			throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자 1개를 입력해 주세요.");
+		}
 		
 		return bonusNum;
 	}
