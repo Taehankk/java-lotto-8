@@ -24,4 +24,17 @@ class LottoCalculatorTest {
 		Winner result = lc.determineWinner(winning, lotto, bonusNum);
 		assertEquals(result, Winner.SECOND);
 	}
+	
+	@DisplayName("로또 결과값 확인 테스트")
+	@Test
+	void printResultTest() {
+		lc.saveWinningResult(Winner.FIRST);
+		lc.saveWinningResult(Winner.FOURTH);
+		lc.saveWinningResult(Winner.FIFTH);
+		lc.saveWinningResult(Winner.FIFTH);
+		
+		String result = lc.calcReturnRate(18000000);
+		
+		assertEquals(result, "11111.7");
+	}
 }
