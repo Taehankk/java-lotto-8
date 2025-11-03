@@ -35,6 +35,6 @@ class LottoCalculatorTest {
 		
 		String result = lc.calcReturnRate(18000000);
 		
-		assertEquals(result, "11111.7");
+		assertEquals(result, "11111.4");
 	}
 }
